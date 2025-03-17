@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, Input, Form, Alert, Card } from '@heroui/react';
+import { useIntl } from 'react-intl';
 import './LogIn.css';
 import logo from '../../assets/logo.png';
 import loginImage from '../../assets/salad.png';
@@ -11,13 +12,14 @@ export function LogIn({ onLoginSuccess }) {
     const [username, setUserName] = useState("");
     const [usernameError, setUserNameError] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
+    const intl = useIntl();
 
     const validarContrasena = (password) => password.length >= 5 && password.length <= 8;
 
     const handlePasswordChange = (e) => {
         const value = e.target.value;
         setPassword(value);
-        setPasswordError(validarContrasena(value) ? null : "La contraseña debe tener minimo 5 y maximo 8 caracteres.");
+        setPasswordError(validarContrasena(value) ? null : intl.formatMessage({ id: 'passwordError' }));
     };
 
     const handleUserNameChange = (e) => {
@@ -28,7 +30,7 @@ export function LogIn({ onLoginSuccess }) {
     const onSubmit = (e) => {
         e.preventDefault();
         if (!username || usernameError || !password || passwordError) {
-            alert("Corrige los errores antes de enviar el formulario.");
+            alert(intl.formatMessage({ id: 'formError' }));
             return;
         }
         setSubmitted({ username, password });
@@ -53,10 +55,10 @@ export function LogIn({ onLoginSuccess }) {
                             isRequired
                             isInvalid={!!usernameError}
                             errorMessage={usernameError}
-                            label="Username"
+                            label={intl.formatMessage({ id: 'usernameLabel' })}
                             labelPlacement="outside"
                             name="Username"
-                            placeholder="Ingresa tu usuario"
+                            placeholder={intl.formatMessage({ id: 'usernamePlaceholder' })}
                             type="Username"
                             value={username}
                             onChange={handleUserNameChange}
@@ -67,21 +69,21 @@ export function LogIn({ onLoginSuccess }) {
                             isRequired
                             isInvalid={!!passwordError}
                             errorMessage={passwordError}
-                            label="Contraseña"
+                            label={intl.formatMessage({ id: 'passwordLabel' })}
                             labelPlacement="outside"
                             name="password"
-                            placeholder="Ingresa tu contraseña"
+                            placeholder={intl.formatMessage({ id: 'passwordPlaceholder' })}
                             type="password"
                             value={password}
                             onChange={handlePasswordChange}
                             labelClassName="input-label" 
                         />
                         <Button className="button-primary w-full mb-7" type="submit">
-                            Log In
+                            {intl.formatMessage({ id: 'loginButton' })}
                         </Button>
                     </Form>
                     {showAlert && (
-                        <Alert color="success" description="Log in exitoso!" onClose={() => setShowAlert(false)} />
+                        <Alert color="success" description={intl.formatMessage({ id: 'loginSuccess' })} onClose={() => setShowAlert(false)} />
                     )}
                 </div>
             </Card>

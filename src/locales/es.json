@@ -1,0 +1,13 @@
+{
+  "menu": "MENÚ",
+  "stores": "TIENDAS",
+  "cart": "CARRITO",
+  "usernameLabel": "Usuario",
+  "usernamePlaceholder": "Ingresa tu usuario",
+  "passwordLabel": "Contraseña",
+  "passwordPlaceholder": "Ingresa tu contraseña",
+  "loginButton": "Iniciar sesión",
+  "loginSuccess": "¡Inicio de sesión exitoso!",
+  "passwordError": "La contraseña debe tener entre 5 y 8 caracteres.",
+  "formError": "Corrige los errores antes de enviar el formulario."
+}

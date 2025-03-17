@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import './styles.css';
 import { fetchCyclingData } from '../services/fetchCyclingData';
 import { galleryData } from '../services/galleryData';
 
-function Menu() {
-  const [menuItems, setMenuItems] = useState([]);
+function GenericComponent({ titleKey }) {
+  const [items, setItems] = useState([]);
   const [galleryItems, setGalleryItems] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const intl = useIntl();
 
   useEffect(() => {
     const fetchData = async () => {
-      const menuData = await fetchCyclingData();
-      setMenuItems(menuData);
+      const data = await fetchCyclingData();
+      setItems(data);
 
       const galleryDataResponse = await galleryData();
       setGalleryItems(galleryDataResponse);
@@ -31,7 +33,7 @@ function Menu() {
   return (
     <div className="menu-page">
       <div className="menu-header">
-        <h1 className="menu-title">MENU</h1>
+        <h1 className="menu-title">{intl.formatMessage({ id: titleKey })}</h1>
       </div>
       <div className="gallery-container">
         {galleryItems.length > 0 && (
@@ -43,7 +45,7 @@ function Menu() {
         )}
       </div>
       <div className="menu-content">
-        {menuItems.map((item, index) => (
+        {items.map((item, index) => (
           <div key={index} className="menu-item">
             <img src={item.image} alt={item.name} className="menu-item-image" />
             <p className="menu-item-title">{item.name.toUpperCase()}</p>
@@ -54,4 +56,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default GenericComponent;

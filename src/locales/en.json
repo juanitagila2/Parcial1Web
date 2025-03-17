@@ -1,0 +1,13 @@
+{
+  "menu": "MENU",
+  "stores": "STORES",
+  "cart": "CART",
+  "usernameLabel": "Username",
+  "usernamePlaceholder": "Enter your username",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "loginButton": "Log In",
+  "loginSuccess": "Login successful!",
+  "passwordError": "Password must be between 5 and 8 characters.",
+  "formError": "Please correct the errors before submitting the form."
+}
