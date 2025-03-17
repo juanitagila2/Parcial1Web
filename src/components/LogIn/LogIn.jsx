@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Button, Input, Form, Alert, Card} from '@heroui/react';
+import { Button, Input, Form, Alert, Card } from '@heroui/react';
 import './LogIn.css';
-import '../../assets/logo.png';
-export function SignIn({ onLoginSuccess }) {
+import logo from '../../assets/logo.png';
+import loginImage from '../../assets/salad.png';
+
+export function LogIn({ onLoginSuccess }) {
     const [submitted, setSubmitted] = useState(null);
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState(null);
@@ -10,12 +12,12 @@ export function SignIn({ onLoginSuccess }) {
     const [usernameError, setUserNameError] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
 
-    const validarContrasena = (password) => password.length >= 8;
+    const validarContrasena = (password) => password.length >= 5 && password.length <= 8;
 
     const handlePasswordChange = (e) => {
         const value = e.target.value;
         setPassword(value);
-        setPasswordError(validarContrasena(value) ? null : "La contraseña debe tener al menos 8 caracteres.");
+        setPasswordError(validarContrasena(value) ? null : "La contraseña debe tener minimo 5 y maximo 8 caracteres.");
     };
 
     const handleUserNameChange = (e) => {
@@ -38,17 +40,16 @@ export function SignIn({ onLoginSuccess }) {
     };
 
     return (
-        <div className='flex justify-center items-center'>
-            <Card className="card2">
-                <img className= "logo"/>
-                <img className= "login"/>
-
+        <div className='bg-container'>
+            <Card className="card2-right ">
+                <img className="logo" src={logo} alt="Logo" style={{ width: '40%', padding: '10px' }} />
+                <img className="login" src={loginImage} alt="Login" style={{ width: '80%', padding: '10px' }} />
             </Card>
             <Card className="card2">
                 <div className="flex flex-col justify-center items-center">
-                    <Form className="w-full mt-4" onSubmit={onSubmit}>
+                    <Form className="text w-full mt-4" onSubmit={onSubmit}>
                         <Input
-                            className="w-full mb-7"
+                            className="text w-full mb-7"
                             isRequired
                             isInvalid={!!usernameError}
                             errorMessage={usernameError}
@@ -59,9 +60,10 @@ export function SignIn({ onLoginSuccess }) {
                             type="Username"
                             value={username}
                             onChange={handleUserNameChange}
+                            labelClassName="input-label" 
                         />
                         <Input
-                            className="w-full mb-7"
+                            className="text w-full mb-7"
                             isRequired
                             isInvalid={!!passwordError}
                             errorMessage={passwordError}
@@ -72,6 +74,7 @@ export function SignIn({ onLoginSuccess }) {
                             type="password"
                             value={password}
                             onChange={handlePasswordChange}
+                            labelClassName="input-label" 
                         />
                         <Button className="button-primary w-full mb-7" type="submit">
                             Log In
@@ -82,9 +85,8 @@ export function SignIn({ onLoginSuccess }) {
                     )}
                 </div>
             </Card>
-            
         </div>
     );
 }
 
-export default SignIn;
+export default LogIn;

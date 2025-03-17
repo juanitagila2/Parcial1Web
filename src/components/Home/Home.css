@@ -1,39 +1,31 @@
-.container-principal {
-    width:fit-content;
-    height: fit-content;
-}
 .container {
-    padding: 5px;
+    background-color: #264653c7; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 50px 20px; /* Espaciado interno */
+    display: flex; /* Usar flexbox */
+    justify-content: space-around; /* Espacio entre los elementos */
+    align-items: center; /* Centrar verticalmente */
+    width: 40%; /* Ancho del contenedor */
+    margin: 30vh auto; /* Centrar horizontalmente */
 }
-.card{
-    width: 500px;
-    height: 400px;
-    padding: 10px;
-    align-items: center;
+
+.item {
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Colocar los elementos en columna */
+    align-items: center; /* Centrar horizontalmente */
+    color: white; /* Color del texto */
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
-    align-content: center;
-    background-image: url('../../assets/background.png'); /* Ruta de la imagen */
-    background-size: cover;  /* Ajusta la imagen al tamaño del contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    width: 100vw; /* Ocupa todo el ancho de la pantalla */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    display: flex; /* Usa flexbox */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    
+
+.menu-icon {
+    width: 100px; /* Ancho del ícono */
+    height: 100px; /* Altura del ícono */
+    margin-bottom: 10px; /* Espacio debajo del ícono */
 }
-.column {
-    align-items: center;
-    padding: 5px;
-    text-align: center;
-}
-.title{
-    color: #000000;
-    font-size: 25px;
-    text-align: center;
-    font-weight: bold;
+
+.title {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
 }
